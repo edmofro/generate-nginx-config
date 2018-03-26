@@ -9,7 +9,7 @@ program
 const inputFilePath = program.in;
 const outputFilePath = program.out;
 try {
-  const configObject = require(inputFilePath);
+  const configObject = require(`${__dirname}/${inputFilePath}`);
   const { domain, subdomains, ssl } = configObject;
   // Start with a server on port 80 and redirecting to the SSL version of the requested URL
   let configString = `server {
@@ -87,8 +87,9 @@ server {
 
 }`;
   }
-  fs.writeFile(outputFilePath, configString);
-  console.log('Done. Be sure to include the contents of https://github.com/h5bp/server-configs-nginx/tree/master/h5bp are at /etc/nginx/h5bp');
+  fs.writeFile(`${__dirname}/${outputFilePath}`, configString, {}, () => {
+    console.log('Done. Be sure to include the contents of https://github.com/h5bp/server-configs-nginx/tree/master/h5bp are at /etc/nginx/h5bp');
+  });
 } catch (error) {
   console.error(error.message);
 }

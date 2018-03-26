@@ -1,0 +1,22 @@
+{
+  "domain": "example.com",
+  "subdomains": [
+    {
+      "name": "dev",
+      "port": 8001,
+      "mobileRedirect": "mobile"
+    },
+    {
+      "name": "mobile",
+      "port": 8002
+    },
+    {
+      "name": "export",
+      "port": 8003
+    }
+  ],
+  "ssl": {
+    "certificate": "/etc/letsencrypt/live/example.com/fullchain.pem",
+    "key": "/etc/letsencrypt/live/example.com/privkey.pem"
+  }
+}

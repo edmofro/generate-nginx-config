@@ -1,0 +1,42 @@
+{
+  "name": "generate-nginx-config",
+  "version": "0.1.0",
+  "description": "Generates a servers.conf file based on a much simpler javascript configuration object",
+  "main": "lib/index.js",
+  "bin": {
+    "generate-ngnix-config": "lib/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel --presets stage-0,es2015 src --out-dir lib",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edmofro/generate-nginx-config.git"
+  },
+  "keywords": [
+    "nginx"
+  ],
+  "author": "Edwin Monk-Fromont <edmofro+npm@gmail.com> (http://sussol.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edmofro/generate-nginx-config/issues"
+  },
+  "homepage": "https://github.com/edmofro/generate-nginx-config",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0"
+  },
+  "dependencies": {
+    "commander": "^2.15.1"
+  }
+}

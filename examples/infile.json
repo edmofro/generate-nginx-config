@@ -3,7 +3,7 @@
   "subdomains": [
     {
       "name": "dev",
-      "port": 8001,
+      "rootPath": "exampleRepository/build",
       "mobileRedirect": "mobile"
     },
     {

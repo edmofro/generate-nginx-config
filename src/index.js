@@ -44,7 +44,6 @@ server {
   ## redirect to m.example.com ##
   if ($mobile_rewrite = perform) {
     return https://${mobileRedirectSubdomain}.${domain};
-
   }` : ''}
 
   ssl_certificate ${ssl.certificate};

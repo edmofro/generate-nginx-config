@@ -28,7 +28,7 @@ server {
 
   listen       443 ssl;
   listen       [::]:443 ssl;
-  server_name  ${name}.${domain};
+  server_name  ${name && name.length > 0 ? `${name}.` : ''}${domain};
   root         ${rootPath || '/usr/share/nginx/html'};${mobileRedirectSubdomain ? `
   set $mobile_rewrite do_not_perform;
 
@@ -47,8 +47,8 @@ server {
 
   }` : ''}
 
-  ssl_certificate "${ssl.certificate}";
-  ssl_certificate_key "${ssl.key}";
+  ssl_certificate ${ssl.certificate};
+  ssl_certificate_key ${ssl.key};
   # It is *strongly* recommended to generate unique DH parameters
   # Generate them with: openssl dhparam -out /etc/pki/nginx/dhparams.pem 2048
   #ssl_dhparam "/etc/pki/nginx/dhparams.pem";

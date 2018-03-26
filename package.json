@@ -1,15 +1,13 @@
 {
   "name": "generate-nginx-config",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Generates a servers.conf file based on a much simpler javascript configuration object",
   "main": "lib/index.js",
-  "bin": {
-    "generate-ngnix-config": "lib/index.js"
-  },
+  "bin": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel --presets stage-0,es2015 src --out-dir lib",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",

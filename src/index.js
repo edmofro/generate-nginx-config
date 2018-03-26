@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import fs from 'fs';
 import program from 'commander';
 
@@ -9,7 +11,7 @@ program
 const inputFilePath = program.in;
 const outputFilePath = program.out;
 try {
-  const configObject = require(`${__dirname}/${inputFilePath}`);
+  const configObject = require(`${process.cwd()}/${inputFilePath}`);
   const { domain, subdomains, ssl } = configObject;
   // Start with a server on port 80 and redirecting to the SSL version of the requested URL
   let configString = `server {
@@ -87,7 +89,7 @@ server {
 
 }`;
   }
-  fs.writeFile(`${__dirname}/${outputFilePath}`, configString, {}, () => {
+  fs.writeFile(`${process.cwd()}/${outputFilePath}`, configString, {}, () => {
     console.log('Done. Be sure to include the contents of https://github.com/h5bp/server-configs-nginx/tree/master/h5bp are at /etc/nginx/h5bp');
   });
 } catch (error) {

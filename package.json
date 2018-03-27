@@ -1,6 +1,6 @@
 {
   "name": "generate-nginx-config",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Generates a servers.conf file based on a much simpler javascript configuration object",
   "main": "lib/index.js",
   "bin": "lib/index.js",

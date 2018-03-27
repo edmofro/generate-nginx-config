@@ -22,7 +22,7 @@ try {
 
   // Add the subdomains with redirects to the appropriate port
   for (let i = 0; i < subdomains.length; i++) {
-    const { name, port, mobileRedirectSubdomain, rootPath } = subdomains[i];
+    const { name, port, mobileRedirectSubdomain, rootPath, timeout } = subdomains[i];
     configString = `${configString}
 server {
 
@@ -66,9 +66,9 @@ server {
               proxy_set_header Host $host;
               proxy_set_header X-Real-IP $remote_addr;
               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_connect_timeout 150;
-              proxy_send_timeout 100;
-              proxy_read_timeout 100;
+              proxy_connect_timeout ${timeout || 150};
+              proxy_send_timeout ${timeout || 100};
+              proxy_read_timeout ${timeout || 100};
               proxy_buffers 4 32k;
               client_max_body_size 8m;
               client_body_buffer_size 128k;

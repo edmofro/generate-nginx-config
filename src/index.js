@@ -22,7 +22,14 @@ try {
 
   // Add the subdomains with redirects to the appropriate port
   for (let i = 0; i < subdomains.length; i++) {
-    const { name, port, mobileRedirectSubdomain, rootPath, timeout } = subdomains[i];
+    const {
+      name,
+      port,
+      mobileRedirectSubdomain,
+      rootPath,
+      timeout,
+      includeCachingRules = true,
+    } = subdomains[i];
     configString = `${configString}
 server {
 
@@ -59,7 +66,7 @@ server {
 
   # Load configuration files for the default server block.
   include /etc/nginx/default.d/*.conf;
-  include /etc/nginx/h5bp/basic.conf;
+  ${includeCachingRules ? 'include /etc/nginx/h5bp/basic.conf;' : ''}
 
   location / ${ rootPath ? '{}' : `{
               proxy_pass http://localhost:${port};

@@ -12,7 +12,8 @@
     },
     {
       "name": "export",
-      "port": 8003
+      "port": 8003,
+      "includeCachingRules": false
     }
   ],
   "ssl": {

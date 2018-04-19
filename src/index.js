@@ -68,7 +68,9 @@ server {
   include /etc/nginx/default.d/*.conf;
   ${includeCachingRules ? 'include /etc/nginx/h5bp/basic.conf;' : ''}
 
-  location / ${ rootPath ? '{}' : `{
+  location / ${ rootPath ? `{
+    try_files '' /index.html =404;
+  }` : `{
               proxy_pass http://localhost:${port};
               proxy_set_header Host $host;
               proxy_set_header X-Real-IP $remote_addr;
